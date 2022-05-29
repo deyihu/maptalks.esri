@@ -2,10 +2,9 @@
 
 import { Util } from 'maptalks';
 import Service from './Service';
-
 import Task from '../Support/Task';
 
-
+ 
 class IdentifyTask extends Task {
     run() {
         return this.request('post', this._params);

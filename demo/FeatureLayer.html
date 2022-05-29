@@ -55,8 +55,12 @@
                 geometry: geometry,
                 geometryType: 'esriGeometryEnvelope'
             }).then(json => {
+                json = JSON.parse(json);
                 console.log('fetures count:', json.features.length);
                 const geometries = service.toGeometry(json);
+                geometries.forEach(geometry => {
+                    geometry.setSymbol(service._options.symbol);
+                });
                 pointLayer.clear();
                 pointLayer.addGeometry(geometries);
                 // map.setCenterAndZoom(extent.getCenter(), zoom);
